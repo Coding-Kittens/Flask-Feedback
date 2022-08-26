@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block title %} Upddate Feedback {% endblock %}
+
+    {% block content %}
+   <form action="/feedback/{{current_feedback.id}}/update" method="POST">
+     {% include 'forms.html' %}
+     <button type="submit" name="button">Upddate</button>
+   </form>
+    {% endblock %}

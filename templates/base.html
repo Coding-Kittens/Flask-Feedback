@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{{ url_for('static',filename='app.css') }}">
+    <title>{% block title %} {% endblock %}</title>
+  </head>
+  <body>
+
+<section id="page_stuff">
+  <nav>
+
+    {%if session['username']%}
+    <a href="/users/{{session['username']}}">{{session['username']}}</a>
+    <a href="/logout">logout</a>
+    {%else%}
+    <a href="/login">login</a>
+    <a href="/register">Register</a>
+    {%endif%}
+
+  </nav>
+
+  {%if get_flashed_messages()%}
+  {%for msg in get_flashed_messages()%}
+  <p>{{msg}}</p>
+  {%endfor%}
+  {%endif%}
+
+
+  {% block content %}
+  {% endblock %}
+</section>
+
+
+</script>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %} {{current_user.username}} {% endblock %}
+
+
+
+
+    {% block content %}
+
+  <h1>Username: {{current_user.username}}</h1>
+
+  <h2>Email: {{current_user.email}}</h2>
+  <h2>First name: {{current_user.first_name}}</h2>
+  <h2>Last name: {{current_user.last_name}}</h2>
+
+
+<ul>
+  {%for feed_back in current_user.feedback%}
+  <li>
+<h3>{{feed_back.title}}</h3>
+<p>{{feed_back.content}} </p>
+<p>By {{feed_back.username}}</p>
+<a href="/feedback/{{feed_back.id}}/update">Edit</a>
+<form  action="/feedback/{{feed_back.id}}/delete" method="POST">
+  <button type="submit" name="button">Delete</button>
+</form>
+
+  </li>
+  {%endfor%}
+</ul>
+
+<a href="/users/{{current_user.username}}/feedback/add">Add Feedback</a>
+
+<form  action="/users/{{current_user.username}}/delete" method="POST">
+  <button type="submit" name="button">Delete User</button>
+</form>
+    {% endblock %}

@@ -1,0 +1,50 @@
+
+body{
+  background-color: #32323A;
+  color: #D3D3DA;
+}
+
+
+img{
+  width: 200px;
+  height: 200px;
+  border-color: #BBBBC6;
+  border-width: 5px;
+  border-style: outset;
+border-radius: 5px;
+}
+
+button:hover,input:hover,label:hover
+{
+  cursor: pointer;
+}
+
+
+label{
+  display: block;
+  position: relative;
+padding: 20px;
+}
+
+input{
+  width: 200px;
+}
+
+a{
+  color: #5E90BD;
+}
+
+
+a:visited{
+  color:#8D8DE0;
+}
+
+a:hover{
+  color:#AE589F;
+}
+
+#error_img
+{
+  width: 500px;
+  height: 500px;
+}
