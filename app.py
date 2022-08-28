@@ -95,12 +95,14 @@ def logout_user():
 @app.route("/users/<username>/delete", methods=["POST"])
 def delete_user(username):
     """Deletes user"""
+
     if "username" in session and session["username"] == username:
         current_user = User.query.get_or_404(username)
-        session.pop("username")
-        current_user.feedback = []
+        for fb in current_user.feedback:
+            Feedback.query.filter_by(id=fb.id).delete()
         User.query.filter_by(username=username).delete()
         db.session.commit()
+        session.pop("username")
         flash("Deleted User")
     return redirect("/register")
 
